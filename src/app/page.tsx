@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from "react";
 import LandingLoading from "./LandingLoading";
-const LandingPage = require("./landing_page/landing_page").default;
+import LandingPage from "./landing_page/landing_page";
 
 export default function Page() {
   const [showLoading, setShowLoading] = useState(false);
