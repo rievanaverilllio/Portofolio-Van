@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
 import { Renderer, Program, Mesh, Triangle, Vec3 } from "ogl";
 
+
 interface OrbProps {
   hue?: number;
   hoverIntensity?: number;
   rotateOnHover?: boolean;
   forceHoverState?: boolean;
+  className?: string;
 }
 
 export default function Orb({
@@ -13,6 +15,7 @@ export default function Orb({
   hoverIntensity = 0.2,
   rotateOnHover = true,
   forceHoverState = false,
+  className = '',
 }: OrbProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
 
@@ -285,5 +288,5 @@ export default function Orb({
     };
   }, [hue, hoverIntensity, rotateOnHover, forceHoverState, frag, vert]);
 
-  return <div ref={ctnDom} className="w-full h-full" />;
+  return <div ref={ctnDom} className={`w-full h-full ${className}`} />;
 }

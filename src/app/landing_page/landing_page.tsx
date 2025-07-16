@@ -77,7 +77,12 @@ const App: React.FC = () => {
             >
                 {/* Orb background */}
                 <div className="absolute inset-0 z-0">
-                    <Orb hue={240} hoverIntensity={0.5} rotateOnHover={true} />
+                    <Orb 
+                      hue={240} 
+                      hoverIntensity={0.5} 
+                      rotateOnHover={true}
+                      className="h-[220px] w-[220px] sm:h-[300px] sm:w-[300px] md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px] mx-auto"
+                    />
                 </div>
                 {/* Particles background */}
                 <div className="absolute inset-0 z-[1]">
