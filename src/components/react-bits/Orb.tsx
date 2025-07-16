@@ -113,7 +113,7 @@ export default function Orb({
     
     float light1(float intensity, float attenuation, float dist) {
       return intensity / (1.0 + dist * attenuation);
-    }
+  }, [frag, vert]);
     
     float light2(float intensity, float attenuation, float dist) {
       return intensity / (1.0 + dist * dist * attenuation);

@@ -589,8 +589,12 @@ class App {
 
   onWheel(e: Event) {
     const wheelEvent = e as WheelEvent;
-    const delta = wheelEvent.deltaY || (wheelEvent as any).wheelDelta || (wheelEvent as any).detail;
-    this.scroll.target += delta > 0 ? this.scrollSpeed : -this.scrollSpeed;
+    // Prioritaskan scroll vertikal (deltaY) untuk menggeser horizontal
+    const deltaY = wheelEvent.deltaY || (wheelEvent as any).wheelDelta || (wheelEvent as any).detail || 0;
+    // Jika ingin mendukung scroll horizontal (trackpad), bisa tambahkan deltaX
+    // const deltaX = wheelEvent.deltaX || 0;
+    // Scroll ke kanan jika scroll ke bawah, ke kiri jika ke atas
+    this.scroll.target += deltaY * this.scrollSpeed * 0.1; // 0.2 agar tidak terlalu cepat
     this.onCheckDebounce();
   }
 
@@ -710,7 +714,6 @@ export default function CircularGallery({
   useEffect(() => {
     if (!containerRef.current) return;
     let app: any = null;
-    let lastCenterIdx = -1;
     app = new App(containerRef.current, {
       items,
       bend,
@@ -721,7 +724,6 @@ export default function CircularGallery({
       scrollEase,
     });
     // Patch update to also set centerTitle
-    const origUpdate = app.update.bind(app);
     app.update = function() {
       this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
       const direction = this.scroll.current > this.scroll.last ? "right" : "left";
