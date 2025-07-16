@@ -255,9 +255,14 @@ const CardSwap: React.FC<CardSwapProps> = ({
           style: { width, height, ...(child.props.style ?? {}) },
           onClick: (e) => {
             if (isSwapping.current) return;
+            // Only allow swap if this card is the front card
+            if (order.current[0] !== i) {
+              child.props.onClick?.(e as React.MouseEvent<HTMLDivElement>);
+              onCardClick?.(i);
+              return;
+            }
             child.props.onClick?.(e as React.MouseEvent<HTMLDivElement>);
             onCardClick?.(i);
-            // Trigger swap animation on card click
             swap();
           },
         } as CardProps & React.RefAttributes<HTMLDivElement>)

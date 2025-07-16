@@ -1,5 +1,5 @@
 'use client';
-import CircularGallery from "@/components/react-bits/CircularGallery";
+import TrackableCircularGallery from "@/components/magicui/TrackableCircularGallery";
 
 import React, { useState } from 'react';
 import { useLenisSmoothScroll } from '@/lib/useLenisSmoothScroll';
@@ -795,7 +795,8 @@ const App: React.FC = () => {
                 <h2 className="text-4xl md:text-5xl font-playfair-display font-bold text-white mb-3">Milestones & Recognition</h2>
                 <p className="text-gray-400 max-w-xl mb-8 text-center">Beberapa pencapaian utama dan penghargaan yang telah diraih selama perjalanan profesional saya di dunia teknologi.</p>
                 <div className="w-full h-[500px] md:h-[300px] relative">
-                  <CircularGallery
+                  {/* Track Card Bubble Feature */}
+                  <TrackableCircularGallery
                     items={[
                       { image: "/cloud_app.jpg", text: "Top 10 in, 2024)" },
                       { image: "/custom_ai_solution.jpg", text: "Certified TensorFlow Developer (Google, 2023)" },

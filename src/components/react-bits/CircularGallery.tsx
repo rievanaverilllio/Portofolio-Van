@@ -704,23 +704,37 @@ interface CircularGalleryProps {
   font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
+  onActiveChange?: (centerIdx: number) => void;
+  loopCount?: number;
+  initialSet?: number;
 }
 
-export default function CircularGallery({
-  items,
-  bend = 3,
-  textColor = "#ffffff",
-  borderRadius = 0.05,
-  font = "bold 30px Figtree",
-  scrollSpeed = 5,
-  scrollEase = 0.05,
-}: CircularGalleryProps) {
+// ...existing code...
+// ...existing code...
+export default function CircularGallery(props: CircularGalleryProps) {
+  const {
+    items,
+    bend = 3,
+    textColor = "#ffffff",
+    borderRadius = 0.05,
+    font = "bold 30px Figtree",
+    scrollSpeed = 5,
+    scrollEase = 0.05,
+    onActiveChange,
+    loopCount = 2,
+    initialSet = 0,
+  } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!containerRef.current) return;
     let app: unknown = null;
+    let lastCenterIdx = -1;
+    // Duplicate items sesuai loopCount
+    const galleryItems = items && items.length > 0
+      ? Array(loopCount + 1).fill(items).flat()
+      : items;
     app = new App(containerRef.current, {
-      items,
+      items: galleryItems,
       bend,
       textColor,
       borderRadius,
@@ -728,7 +742,15 @@ export default function CircularGallery({
       scrollSpeed,
       scrollEase,
     });
-    // Patch update to also set centerTitle
+    // Set posisi awal ke set tengah
+    if (galleryItems && galleryItems.length > 0 && typeof initialSet === 'number' && initialSet > 0) {
+      const itemCount = items?.length || 1;
+      const startIdx = initialSet * itemCount;
+      const width = (app as App).medias?.[0]?.width || 1;
+      (app as App).scroll.current = startIdx * width;
+      (app as App).scroll.target = startIdx * width;
+    }
+    // Patch update to also set centerTitle and call onActiveChange
     (app as App).update = function() {
       this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
       const direction = this.scroll.current > this.scroll.last ? "right" : "left";
@@ -743,6 +765,11 @@ export default function CircularGallery({
           }
         }
       }
+      // Call onActiveChange if centerIdx changed
+      if (typeof onActiveChange === 'function' && centerIdx !== lastCenterIdx) {
+        onActiveChange(centerIdx);
+        lastCenterIdx = centerIdx;
+      }
       const isStopped = Math.abs(this.scroll.current - this.scroll.target) < 0.01 && Math.abs(this.scroll.current - this.scroll.last) < 0.01;
       this.medias.forEach((media: Media, idx: number) => {
         media.update(this.scroll, direction, idx === centerIdx, isStopped);
@@ -755,23 +782,10 @@ export default function CircularGallery({
     return () => {
       (app as App).destroy();
     };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, onActiveChange, loopCount, initialSet]);
   return (
     <div className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing" style={{position:'relative'}} ref={containerRef}>
-      {/* centerTitle && (
-        <div style={{position:'absolute', left:0, right:0, bottom:24, textAlign:'center', zIndex:20}}>
-          <span style={{
-            background:'rgba(30,30,30,0.85)',
-            color:'#fff',
-            fontWeight:'bold',
-            fontSize:'1rem', // diperkecil dari 1.5rem
-            padding:'0.3em 1em', // diperkecil
-            borderRadius:'1em',
-            boxShadow:'0 2px 12px rgba(0,0,0,0.18)',
-            display:'inline-block',
-          }}>{centerTitle}</span>
-        </div>
-      ) */}
+      {/* centerTitle bubble handled by parent */}
     </div>
   );
 }
