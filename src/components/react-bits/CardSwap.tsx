@@ -126,14 +126,20 @@ const CardSwap: React.FC<CardSwapProps> = ({
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const intervalRef = useRef<number | null>(null);
   const container = useRef<HTMLDivElement>(null);
+  const isSwapping = useRef(false);
 
   // Move swap function outside useEffect so it can be called from onClick
   const swap = useCallback(() => {
     if (order.current.length < 2) return;
+    if (isSwapping.current) return;
     if (tlRef.current && tlRef.current.isActive()) return;
+    isSwapping.current = true;
     const [front, ...rest] = order.current;
     const elFront = refs[front]?.current;
-    if (!elFront) return;
+    if (!elFront) {
+      isSwapping.current = false;
+      return;
+    }
     const tl = gsap.timeline();
     tlRef.current = tl;
     tl.to(elFront, {
@@ -179,6 +185,9 @@ const CardSwap: React.FC<CardSwapProps> = ({
     );
     tl.call(() => {
       order.current = [...rest, front];
+    });
+    tl.eventCallback("onComplete", () => {
+      isSwapping.current = false;
     });
   }, [refs, cardDistance, verticalDistance, config]);
 
@@ -234,6 +243,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
           ref: refs[i],
           style: { width, height, ...(child.props.style ?? {}) },
           onClick: (e) => {
+            if (isSwapping.current) return;
             child.props.onClick?.(e as React.MouseEvent<HTMLDivElement>);
             onCardClick?.(i);
             // Trigger swap animation on card click
