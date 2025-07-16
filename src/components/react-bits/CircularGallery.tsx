@@ -18,8 +18,11 @@ function lerp(p1: number, p2: number, t: number): number {
 function autoBind(instance: object): void {
   const proto = Object.getPrototypeOf(instance);
   Object.getOwnPropertyNames(proto).forEach((key) => {
-    if (key !== "constructor" && typeof (instance as Record<string, unknown>)[key] === "function") {
-      (instance as Record<string, unknown>)[key] = (instance as Record<string, unknown>)[key].bind(instance);
+    if (key !== "constructor") {
+      const fn = (instance as Record<string, unknown>)[key];
+      if (typeof fn === "function") {
+        (instance as Record<string, unknown>)[key] = fn.bind(instance);
+      }
     }
   });
 }
@@ -587,6 +590,7 @@ class App {
   onTouchUp() {
     this.isDown = false;
     this.onCheck();
+
   }
 
   onWheel(e: Event) {
