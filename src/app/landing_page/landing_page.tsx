@@ -331,7 +331,14 @@ const App: React.FC = () => {
                                 pauseOnHover={true}
                                 skewAmount={3}
                                 easing="elastic"
-                                onCardClick={(idx) => console.log(`Card ${idx} clicked`)}
+                                // Perbaikan: pastikan klik pada kartu langsung trigger animasi ke kartu tersebut
+                                onCardClick={(idx) => {
+                                  if (typeof window !== 'undefined') {
+                                    // Trigger custom event agar CardSwap langsung swap card ke belakang
+                                    const event = new CustomEvent('cardSwapToBack', { detail: { idx } });
+                                    window.dispatchEvent(event);
+                                  }
+                                }}
                             >
                                 <Card className="project-card bg-[#1a1a1a] border-gray-700 overflow-hidden transition-all duration-300">
                                     <div className="w-full h-full flex flex-col">
