@@ -189,6 +189,9 @@ const CardSwap: React.FC<CardSwapProps> = ({
     tl.eventCallback("onComplete", () => {
       isSwapping.current = false;
     });
+    tl.eventCallback("onInterrupt", () => {
+      isSwapping.current = false;
+    });
   }, [refs, cardDistance, verticalDistance, config]);
 
   useEffect(() => {
@@ -214,11 +217,19 @@ const CardSwap: React.FC<CardSwapProps> = ({
     if (pauseOnHover && container.current) {
       const node = container.current;
       const pause = () => {
-        if (tlRef.current) tlRef.current.pause();
+        if (tlRef.current) {
+          tlRef.current.pause();
+          // Saat di-pause, flag tetap true jika timeline masih aktif
+          if (!tlRef.current.isActive()) isSwapping.current = false;
+        }
         if (intervalRef.current) clearInterval(intervalRef.current);
       };
       const resume = () => {
-        if (tlRef.current) tlRef.current.play();
+        if (tlRef.current) {
+          tlRef.current.play();
+          // Jika timeline sudah selesai setelah resume, pastikan flag false
+          if (!tlRef.current.isActive()) isSwapping.current = false;
+        }
         intervalRef.current = window.setInterval(swap, delay);
       };
       node.addEventListener("mouseenter", pause);
