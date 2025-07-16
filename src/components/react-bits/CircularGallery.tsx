@@ -737,7 +737,7 @@ export default function CircularGallery({
         }
       }
       const isStopped = Math.abs(this.scroll.current - this.scroll.target) < 0.01 && Math.abs(this.scroll.current - this.scroll.last) < 0.01;
-      this.medias.forEach((media, idx) => {
+      this.medias.forEach((media: any, idx: number) => {
         media.update(this.scroll, direction, idx === centerIdx, isStopped);
       });
       this.renderer.render({ scene: this.scene, camera: this.camera });
