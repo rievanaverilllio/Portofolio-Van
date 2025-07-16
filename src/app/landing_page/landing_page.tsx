@@ -1,13 +1,11 @@
-
 'use client';
 import CircularGallery from "@/components/react-bits/CircularGallery";
 
 import React, { useState, useEffect } from 'react';
 import { useLenisSmoothScroll } from '@/lib/useLenisSmoothScroll';
-import { ChevronDown, Instagram, Linkedin, Github, ArrowRight, Download, Target, Layers, Monitor, Paintbrush, Send, LayoutGrid, ArrowUpDown, Check, Clock, HelpCircle, Handshake, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronDown, Instagram, Linkedin, Github, ArrowRight, Download, Target, Layers, Monitor, Paintbrush, Send, LayoutGrid, HelpCircle, Handshake, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { RetroGrid } from "@/components/magicui/retro-grid";
 import CardSwap, { Card } from '@/components/react-bits/CardSwap';
 import Orb from '@/components/react-bits/Orb';
 import Threads from '@/components/react-bits/Threads';
@@ -83,8 +81,6 @@ const portfolioItems = [
         altText: "Preview project Portfoy"
     },
 ];
-
-const duplicatedItems = [...portfolioItems, ...portfolioItems];
 // --- END: Data for Portfolio Carousel ---
 
 const achievementItems = [
@@ -246,10 +242,6 @@ const activityImages = [
     "/moon.png",
     "/window.svg",
 ];
-
-function shuffleArray([...array]: string[]) {
-    return array.sort(() => Math.random() - 0.5);
-}
 
 const springTransition = {
     type: 'spring' as const,

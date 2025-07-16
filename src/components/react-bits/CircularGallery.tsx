@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 type GL = Renderer["gl"];
 
-function debounce<T extends (...args: any[]) => void>(func: T, wait: number) {
+function debounce<T extends (...args: unknown[]) => void>(func: T, wait: number) {
   let timeout: number;
   return function (this: any, ...args: Parameters<T>) {
     window.clearTimeout(timeout);
@@ -15,11 +15,11 @@ function lerp(p1: number, p2: number, t: number): number {
   return p1 + (p2 - p1) * t;
 }
 
-function autoBind(instance: any): void {
+function autoBind(instance: object): void {
   const proto = Object.getPrototypeOf(instance);
   Object.getOwnPropertyNames(proto).forEach((key) => {
-    if (key !== "constructor" && typeof instance[key] === "function") {
-      instance[key] = instance[key].bind(instance);
+    if (key !== "constructor" && typeof (instance as Record<string, unknown>)[key] === "function") {
+      (instance as Record<string, unknown>)[key] = (instance as Record<string, unknown>)[key].bind(instance);
     }
   });
 }
@@ -304,10 +304,12 @@ class Media {
   }
 
   destroy() {
-    if ((this as any)._cleanupTitleHover) {
-      (this as any)._cleanupTitleHover();
-      window.removeEventListener('beforeunload', (this as any)._cleanupTitleHover);
-      (this as any)._cleanupTitleHover = null;
+    // Perbaiki pengecekan dan pemanggilan _cleanupTitleHover
+    const cleanup = (this as unknown as { _cleanupTitleHover: (() => void) | undefined })._cleanupTitleHover;
+    if (typeof cleanup === 'function') {
+      cleanup();
+      window.removeEventListener('beforeunload', cleanup);
+      (this as unknown as { _cleanupTitleHover: (() => void) | undefined })._cleanupTitleHover = undefined;
     }
     if (this.title) {
       this.title.mesh.setParent(null);
@@ -417,7 +419,7 @@ class App {
     last: number;
     position?: number;
   };
-  onCheckDebounce: (...args: any[]) => void;
+  onCheckDebounce: (...args: unknown[]) => void;
   renderer!: Renderer;
   gl!: GL;
   camera!: Camera;
@@ -678,9 +680,9 @@ class App {
     window.removeEventListener("touchmove", this.boundOnTouchMove);
     window.removeEventListener("touchend", this.boundOnTouchUp);
     if (this.medias) {
-      this.medias.forEach((media) => {
-        if (typeof (media as any).destroy === 'function') {
-          (media as any).destroy();
+      this.medias.forEach((media: Media) => {
+        if (media && typeof media.destroy === 'function') {
+          media.destroy();
         }
       });
     }
@@ -713,7 +715,7 @@ export default function CircularGallery({
   const [centerTitle, setCenterTitle] = useState<string | null>(null);
   useEffect(() => {
     if (!containerRef.current) return;
-    let app: any = null;
+    let app: unknown = null;
     app = new App(containerRef.current, {
       items,
       bend,
@@ -724,7 +726,8 @@ export default function CircularGallery({
       scrollEase,
     });
     // Patch update to also set centerTitle
-    app.update = function() {
+    const origUpdate = (app as App).update.bind(app);
+    (app as App).update = function() {
       this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
       const direction = this.scroll.current > this.scroll.last ? "right" : "left";
       let minDist = Infinity;
@@ -739,22 +742,16 @@ export default function CircularGallery({
         }
       }
       const isStopped = Math.abs(this.scroll.current - this.scroll.target) < 0.01 && Math.abs(this.scroll.current - this.scroll.last) < 0.01;
-      this.medias.forEach((media: any, idx: number) => {
+      this.medias.forEach((media: Media, idx: number) => {
         media.update(this.scroll, direction, idx === centerIdx, isStopped);
       });
       this.renderer.render({ scene: this.scene, camera: this.camera });
       this.scroll.last = this.scroll.current;
       this.raf = window.requestAnimationFrame(this.update.bind(this));
-      // Set center title for HTML overlay
-      if (isStopped && centerIdx !== -1 && this.medias[centerIdx]) {
-        setCenterTitle(this.medias[centerIdx].text);
-      } else {
-        setCenterTitle(null);
-      }
     };
-    app.update();
+    (app as App).update();
     return () => {
-      app.destroy();
+      (app as App).destroy();
     };
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
   return (
