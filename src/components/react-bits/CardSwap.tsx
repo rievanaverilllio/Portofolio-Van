@@ -9,6 +9,7 @@ import React, {
   useEffect,
   useMemo,
   useRef,
+  useCallback,
 } from "react";
 import gsap from "gsap";
 
@@ -85,7 +86,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
   easing = "elastic",
   children,
 }) => {
-  const config =
+  const config = useMemo(() =>
     easing === "elastic"
       ? {
           ease: "elastic.out(0.6,0.9)",
@@ -102,7 +103,9 @@ const CardSwap: React.FC<CardSwapProps> = ({
           durReturn: 0.8,
           promoteOverlap: 0.45,
           returnDelay: 0.2,
-        };
+        },
+    [easing]
+  );
 
   const childArr = useMemo(
     () => Children.toArray(children) as ReactElement<CardProps>[],
@@ -110,7 +113,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
   );
   const refs = useMemo<CardRef[]>(
     () => childArr.map(() => React.createRef<HTMLDivElement>()),
-    [childArr, childArr.length]
+    [childArr]
   );
 
   const order = useRef<number[]>(
@@ -122,30 +125,23 @@ const CardSwap: React.FC<CardSwapProps> = ({
   const container = useRef<HTMLDivElement>(null);
 
   // Move swap function outside useEffect so it can be called from onClick
-  const swap = () => {
+  const swap = useCallback(() => {
     if (order.current.length < 2) return;
     if (tlRef.current && tlRef.current.isActive()) return;
-
     const [front, ...rest] = order.current;
     const elFront = refs[front]?.current;
     if (!elFront) return;
-
     const tl = gsap.timeline();
     tlRef.current = tl;
-
-    // Drop the front card
     tl.to(elFront, {
       y: "+=500",
       duration: config.durDrop,
       ease: config.ease,
     });
-
-    // Promote other cards
     tl.addLabel("promote", `-=${config.durDrop * config.promoteOverlap}`);
     rest.forEach((idx, i) => {
       const el = refs[idx]?.current;
       if (!el) return;
-      
       const slot = makeSlot(i, cardDistance, verticalDistance, refs.length);
       tl.set(el, { zIndex: slot.zIndex }, "promote");
       tl.to(
@@ -160,8 +156,6 @@ const CardSwap: React.FC<CardSwapProps> = ({
         `promote+=${i * 0.1}`
       );
     });
-
-    // Return front card to back
     const backSlot = makeSlot(
       refs.length - 1,
       cardDistance,
@@ -180,11 +174,10 @@ const CardSwap: React.FC<CardSwapProps> = ({
       },
       "return"
     );
-
     tl.call(() => {
       order.current = [...rest, front];
     });
-  };
+  }, [refs, cardDistance, verticalDistance, config]);
 
   useEffect(() => {
     if (refs.length === 0 || !refs.every(ref => ref.current)) return;

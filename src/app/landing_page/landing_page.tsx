@@ -3,7 +3,7 @@ import CircularGallery from "@/components/react-bits/CircularGallery";
 
 import React, { useState } from 'react';
 import { useLenisSmoothScroll } from '@/lib/useLenisSmoothScroll';
-import { ChevronDown, Instagram, Linkedin, Github, ArrowRight, Download, Target, Layers, Monitor, Paintbrush, Send, LayoutGrid, HelpCircle, Handshake, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronDown, Instagram, Linkedin, Github, ArrowRight, Download, Target, Layers, Monitor, Paintbrush, Send, LayoutGrid, HelpCircle, Handshake } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import CardSwap, { Card } from '@/components/react-bits/CardSwap';
@@ -62,65 +62,6 @@ const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, ans
     </div>
   );
 };
-
-// --- START: Data for Portfolio Carousel ---
-const portfolioItems = [
-    {
-        title: "LanderOS",
-        imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-        altText: "Preview project LanderOS"
-    },
-    {
-        title: "Alter",
-        imageUrl: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
-        altText: "Preview project Alter"
-    },
-    {
-        title: "Portfoy",
-        imageUrl: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-        altText: "Preview project Portfoy"
-    },
-];
-// --- END: Data for Portfolio Carousel ---
-
-const achievementItems = [
-    {
-        image: "/cloud_app.jpg",
-        title: "Winner - National AI Hackathon 2023",
-        description: "Meraih juara 1 dalam kompetisi AI tingkat nasional dengan solusi deteksi fraud berbasis deep learning.",
-        type: "Achievement"
-    },
-    {
-        image: "/custom_ai_solution.jpg",
-        title: "Publikasi: AI for Business Automation (2024)",
-        description: "Publikasi di jurnal internasional tentang penerapan AI untuk otomasi bisnis di sektor retail.",
-        type: "Publication"
-    },
-    {
-        image: "/fullstack_developer.jpg",
-        title: "Best Developer Award - TechNova 2022",
-        description: "Penghargaan sebagai developer terbaik di TechNova AI karena kontribusi pada proyek cloud-native.",
-        type: "Achievement"
-    },
-    {
-        image: "/programmer1.jpg",
-        title: "Publikasi: Scalable Web Apps with Next.js",
-        description: "Artikel populer di Medium tentang arsitektur aplikasi web modern dengan Next.js dan Node.js.",
-        type: "Publication"
-    },
-    {
-        image: "/programmer2.jpg",
-        title: "Finalist - International Data Science Challenge",
-        description: "Masuk finalis dalam kompetisi data science internasional dengan proyek prediksi demand energi.",
-        type: "Achievement"
-    },
-    {
-        image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-        title: "Publikasi: AI & Cloud Integration (2023)",
-        description: "Publikasi di konferensi teknologi tentang integrasi AI dan cloud untuk solusi enterprise.",
-        type: "Publication"
-    },
-];
 
 const App: React.FC = () => {
     useLenisSmoothScroll();

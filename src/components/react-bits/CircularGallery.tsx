@@ -5,9 +5,9 @@ type GL = Renderer["gl"];
 
 function debounce<T extends (...args: unknown[]) => void>(func: T, wait: number) {
   let timeout: number;
-  return function (this: Record<string, unknown>, ...args: Parameters<T>) {
+  return (...args: Parameters<T>) => {
     window.clearTimeout(timeout);
-    timeout = window.setTimeout(() => func.apply(this, args), wait);
+    timeout = window.setTimeout(() => func(...args), wait);
   };
 }
 
@@ -592,7 +592,7 @@ class App {
   onWheel(e: Event) {
     const wheelEvent = e as WheelEvent;
     // Prioritaskan scroll vertikal (deltaY) untuk menggeser horizontal
-    const deltaY = wheelEvent.deltaY || (wheelEvent as any).wheelDelta || (wheelEvent as any).detail || 0;
+    const deltaY = wheelEvent.deltaY || (wheelEvent as unknown as { wheelDelta: number }).wheelDelta || (wheelEvent as unknown as { detail: number }).detail || 0;
     // Jika ingin mendukung scroll horizontal (trackpad), bisa tambahkan deltaX
     // const deltaX = wheelEvent.deltaX || 0;
     // Scroll ke kanan jika scroll ke bawah, ke kiri jika ke atas
@@ -712,7 +712,6 @@ export default function CircularGallery({
   scrollEase = 0.05,
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [centerTitle, setCenterTitle] = useState<string | null>(null);
   useEffect(() => {
     if (!containerRef.current) return;
     let app: unknown = null;
@@ -756,7 +755,7 @@ export default function CircularGallery({
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
   return (
     <div className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing" style={{position:'relative'}} ref={containerRef}>
-      {centerTitle && (
+      {/* centerTitle && (
         <div style={{position:'absolute', left:0, right:0, bottom:24, textAlign:'center', zIndex:20}}>
           <span style={{
             background:'rgba(30,30,30,0.85)',
@@ -769,7 +768,7 @@ export default function CircularGallery({
             display:'inline-block',
           }}>{centerTitle}</span>
         </div>
-      )}
+      ) */}
     </div>
   );
 }
