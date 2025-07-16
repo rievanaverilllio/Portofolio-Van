@@ -1,5 +1,5 @@
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 type GL = Renderer["gl"];
 
@@ -725,7 +725,6 @@ export default function CircularGallery({
       scrollEase,
     });
     // Patch update to also set centerTitle
-    const origUpdate = (app as App).update.bind(app);
     (app as App).update = function() {
       this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
       const direction = this.scroll.current > this.scroll.last ? "right" : "left";
