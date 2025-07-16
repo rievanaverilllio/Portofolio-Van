@@ -110,7 +110,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
   );
   const refs = useMemo<CardRef[]>(
     () => childArr.map(() => React.createRef<HTMLDivElement>()),
-    [childArr.length]
+    [childArr, childArr.length]
   );
 
   const order = useRef<number[]>(
@@ -229,7 +229,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
       clearTimeout(initialTimeout);
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [refs, cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing, config]);
+  }, [refs, cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing, config, swap]);
 
   const rendered = childArr.map((child, i) =>
     isValidElement<CardProps>(child)
