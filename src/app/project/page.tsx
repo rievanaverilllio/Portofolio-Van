@@ -12,35 +12,35 @@ const projects = [
   {
     title: "LanderOS",
     description: "Modern operating system interface built with React and TypeScript.",
-    image: "/cloud_app.jpg",
+    image: "/global/cloud_app.jpg",
     tags: ["React", "TypeScript"],
     link: "#"
   },
   {
     title: "AI Analytics",
     description: "Machine learning platform for business intelligence and data analysis.",
-    image: "/custom_ai_solution.jpg",
+    image: "/global/custom_ai_solution.jpg",
     tags: ["Python", "TensorFlow"],
     link: "#"
   },
   {
     title: "CloudSync",
     description: "Real-time collaboration platform with file synchronization features.",
-    image: "/fullstack_developer.jpg",
+    image: "/global/fullstack_developer.jpg",
     tags: ["Node.js", "Socket.io"],
     link: "#"
   },
   {
     title: "DesignStudio",
     description: "Creative design tool with AI-powered suggestions and collaboration.",
-    image: "/programmer1.jpg",
+    image: "/global/programmer1.jpg",
     tags: ["Vue.js", "Canvas API"],
     link: "#"
   },
   {
     title: "DataFlow",
     description: "Enterprise data pipeline with real-time processing and analytics.",
-    image: "/programmer2.jpg",
+    image: "/global/programmer2.jpg",
     tags: ["Next.js", "GraphQL"],
     link: "#"
   }

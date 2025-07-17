@@ -16,13 +16,13 @@ import Particles from '@/components/react-bits/Particles';
 import InfiniteScroll from '@/components/react-bits/InfiniteScroll';
 // --- START: Activities Infinite Scroll Section ---
 const activitiesImages = [
-  '/programmer1.jpg',
-  '/programmer2.jpg',
-  '/cloud_app.jpg',
-  '/custom_ai_solution.jpg',
-  '/fullstack_developer.jpg',
-  '/rievan.jpg',
-  '/moon.png',
+  '/global/programmer1.jpg',
+  '/global/programmer2.jpg',
+  '/global/cloud_app.jpg',
+  '/global/custom_ai_solution.jpg',
+  '/global/fullstack_developer.jpg',
+  '/global/rievan.jpg',
+  '/global/moon.png',
   '/window.svg',
 ];
 
@@ -112,7 +112,7 @@ const App: React.FC = () => {
                         className="mb-6 mt-16 flex flex-col items-center justify-center space-y-4 md:flex-row md:space-x-6 md:space-y-0">
                         <div className="app-icon profile-image-container overflow-hidden">
                           <Image
-                            src="/rievan.jpg"
+                            src="/global/rievan.jpg"
                             alt="Rievan"
                             width={80}
                             height={80}
@@ -135,7 +135,7 @@ const App: React.FC = () => {
                             <div className="flex space-x-4">
                                 <div className="app-icon cloud">
                                     <Image
-                                        src="/programmer1.jpg"
+                                        src="/global/programmer1.jpg"
                                         alt="programmer_app"
                                         width={80}
                                         height={80}
@@ -147,7 +147,7 @@ const App: React.FC = () => {
                                 </div>
                                 <div className="app-icon programmer2">
                                     <Image
-                                        src="/programmer2.jpg"
+                                        src="/global/programmer2.jpg"
                                         alt="programmer_app"
                                         width={80}
                                         height={80}
@@ -329,7 +329,7 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/cloud_app.jpg"
+                                                src="/global/cloud_app.jpg"
                                                 alt="LanderOS Project"
                                                 width={420}
                                                 height={200}
@@ -361,7 +361,7 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/custom_ai_solution.jpg"
+                                                src="/global/custom_ai_solution.jpg"
                                                 alt="AI Analytics Project"
                                                 width={420}
                                                 height={200}
@@ -393,7 +393,7 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/fullstack_developer.jpg"
+                                                src="/global/fullstack_developer.jpg"
                                                 alt="CloudSync Project"
                                                 width={420}
                                                 height={200}
@@ -425,7 +425,7 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/programmer1.jpg"
+                                                src="/global/programmer1.jpg"
                                                 alt="DesignStudio Project"
                                                 width={420}
                                                 height={200}
@@ -468,7 +468,7 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/programmer2.jpg"
+                                                src="/global/programmer2.jpg"
                                                 alt="DataFlow Project"
                                                 width={420}
                                                 height={200}
@@ -606,7 +606,7 @@ const App: React.FC = () => {
                   <div className="flex justify-center mb-6">
                     <div className="w-68 h-68 rounded2xl overflow-hidden shadow-lg">
                       <Image 
-                        src="/rievan.jpg" 
+                        src="/global/rievan.jpg" 
                         alt="PIC_PROFILE" 
                         width={272}
                         height={272}
@@ -793,12 +793,21 @@ const App: React.FC = () => {
                   {/* Track Card Bubble Feature */}
                   <TrackableCircularGallery
                     items={[
-                      { image: "/cloud_app.jpg", text: "Top 10 in, 2024)" },
-                      { image: "/custom_ai_solution.jpg", text: "Certified TensorFlow Developer (Google, 2023)" },
-                      { image: "/fullstack_developer.jpg", text: "Best Web App - Student Project (TechSphere University, 2022)" },
-                      { image: "/programmer1.jpg", text: "Innovation Award (Startup Fest, 2023)" },
-                      { image: "/programmer2.jpg", text: "Best Team Project (DataMind Labs, 2021)" },
+                      { image: "/achievements/hkicheator.jpg", text: "Hak Kekayaan Intelektual, Itenas 2024" },
+                      { image: "/achievements/aslab_pemdas.jpg", text: "Asisten Laboratorium Pemograman Dasar, Itenas 2024" },
+                      { image: "/achievements/findit.jpg", text: "Peserta Data Analyst FindIT, UGM 2024" },
+                      { image: "/achievements/fortex.png", text: "Peserta Data Analyst Fortex, UAI 2024" },
+                      { image: "/achievements/Huawei Juara 2.jpg", text: "Juara 2 Cloud Computing Track, Huawei 2024" },
+                      { image: "/achievements/Sertif_Best_Presntasi.jpg", text: "Sertifikat Best Presentation, UNJ 2024" },
                     ]}
+                    renderImage={(src, alt) => (
+                      <img
+                        src={src}
+                        alt={alt}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }}
+                        draggable={false}
+                      />
+                    )}
                     bend={3}
                     textColor="#ffffff"
                     borderRadius={0.07}
