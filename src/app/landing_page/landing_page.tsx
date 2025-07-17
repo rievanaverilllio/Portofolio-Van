@@ -69,6 +69,7 @@ const App: React.FC = () => {
         <div className="relative flex min-h-screen flex-col bg-[#18181b] font-inter overflow-x-hidden">
             {/* Hero Section */}
             <motion.section 
+                id="hero"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -207,6 +208,7 @@ const App: React.FC = () => {
 
             {/* Threads Animation Section */}
             <motion.section
+                id="threads"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 1, ease: "easeOut" }}
@@ -260,6 +262,7 @@ const App: React.FC = () => {
 
             {/* New Portfolio Section with CardSwap */}
             <motion.section
+                id="portfolio"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -519,6 +522,7 @@ const App: React.FC = () => {
 
             {/* Activities Infinite Scroll Section */}
             <motion.section
+                id="activities"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -586,6 +590,7 @@ const App: React.FC = () => {
 
             {/* Profile Section */}
             <motion.section
+                id="profile"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -771,6 +776,7 @@ const App: React.FC = () => {
 
             {/* Achievements Section - Circular Gallery */}
             <motion.section
+                id="achievements"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -824,6 +830,7 @@ const App: React.FC = () => {
 
             {/* FAQs Section */}
             <motion.section
+                id="faqs"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -1102,7 +1109,74 @@ const App: React.FC = () => {
                     border: 1.5px solid rgba(30,30,30,0.18);
                 }
             `}</style>
-        </div>
+        {/* Bottom Navbar Section */}
+        <nav className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex justify-center items-center">
+          <div
+            className="border border-gray-700 rounded-full shadow-lg px-4 py-1 flex items-center"
+            style={{
+              minHeight: '44px',
+              minWidth: 'fit-content',
+              background: 'linear-gradient(90deg, rgba(30,30,30,0.85) 60%, rgba(60,60,80,0.65) 100%)',
+              backdropFilter: 'blur(16px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+              boxShadow: '0 4px 24px 0 rgba(80,120,255,0.12), 0 1.5px 6px 0 rgba(30,41,59,0.10)'
+            }}
+          >
+            <ul className="flex space-x-2">
+              <li>
+                <button className="text-white text-xs font-semibold px-3 py-1 rounded-full hover:bg-gray-700 transition" style={{minWidth:'60px'}} onClick={() => document.getElementById('main')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Home
+                </button>
+              </li>
+              <li>
+                <button className="text-white text-xs font-semibold px-3 py-1 rounded-full hover:bg-gray-700 transition" style={{minWidth:'60px'}} onClick={() => document.getElementById('threads')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Threads
+                </button>
+              </li>
+              <li>
+                <button className="text-white text-xs font-semibold px-3 py-1 rounded-full hover:bg-gray-700 transition" style={{minWidth:'60px'}} onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Portfolio
+                </button>
+              </li>
+              <li>
+                <button className="text-white text-xs font-semibold px-3 py-1 rounded-full hover:bg-gray-700 transition" style={{minWidth:'60px'}} onClick={() => document.getElementById('activities')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Activities
+                </button>
+              </li>
+              <li>
+                <button className="text-white text-xs font-semibold px-3 py-1 rounded-full hover:bg-gray-700 transition" style={{minWidth:'60px'}} onClick={() => document.getElementById('profile')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Profile
+                </button>
+              </li>
+              <li>
+                <button className="text-white text-xs font-semibold px-3 py-1 rounded-full hover:bg-gray-700 transition" style={{minWidth:'60px'}} onClick={() => document.getElementById('achievements')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Achievements
+                </button>
+              </li>
+              <li>
+                <button className="text-white text-xs font-semibold px-3 py-1 rounded-full hover:bg-gray-700 transition" style={{minWidth:'60px'}} onClick={() => document.getElementById('faqs')?.scrollIntoView({ behavior: 'smooth' })}>
+                  FAQs
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {/* Footer Section */}
+        <footer className="w-full bg-[#18181b] py-8 px-4 flex flex-col items-center justify-center border-t border-gray-800 relative z-10 mt-16">
+          <div className="flex items-center space-x-4 mb-2">
+            <a href="https://www.instagram.com/rievanavrellio/" target="_blank" rel="noopener noreferrer" className="icon-button text-white p-2 hover:bg-gray-800 rounded-full">
+              <Instagram width="22" height="22" />
+            </a>
+            <a href="https://www.linkedin.com/in/rievanavrellio" target="_blank" rel="noopener noreferrer" className="icon-button text-white p-2 hover:bg-gray-800 rounded-full">
+              <Linkedin width="22" height="22" />
+            </a>
+            <a href="https://github.com/rievanaverilllio" target="_blank" rel="noopener noreferrer" className="icon-button text-white p-2 hover:bg-gray-800 rounded-full">
+              <Github width="22" height="22" />
+            </a>
+          </div>
+          <div className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} Rievan Averillio. All rights reserved.</div>
+        </footer>
+      </div>
     );
 };
 
