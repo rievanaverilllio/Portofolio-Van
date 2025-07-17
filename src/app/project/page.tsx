@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Heading from "@/components/template/Heading";
 import Footer from "@/components/template/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Particles from "@/components/react-bits/Particles";
 
@@ -102,10 +103,10 @@ const ProjectPage: React.FC = () => {
         </div>
       </motion.main>
       <div className="w-full flex justify-center py-8 mb-8 relative z-20">
-        <a href="/" className="button-gradient-dark flex items-center gap-2 px-8 py-3 rounded-full text-white font-medium text-lg shadow-lg hover:scale-105 transition-all">
+        <Link href="/" className="button-gradient-dark flex items-center gap-2 px-8 py-3 rounded-full text-white font-medium text-lg shadow-lg hover:scale-105 transition-all">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           <span>Back to Home</span>
-        </a>
+        </Link>
       </div>
       <Footer />
     </div>
