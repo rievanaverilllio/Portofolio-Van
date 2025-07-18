@@ -29,12 +29,14 @@ const activitiesImages = [
 const activitiesItems = activitiesImages.map((img, idx) => ({
   content: (
     <div className="w-full h-full flex items-center justify-center">
-      <img
+      <Image
         src={img}
         alt={`Activity ${idx + 1}`}
         className="rounded-xl object-cover w-full h-full shadow-lg border border-gray-700 bg-[#18181b]"
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         draggable={false}
+        width={400}
+        height={300}
       />
     </div>
   ),
@@ -802,11 +804,13 @@ const App: React.FC = () => {
                       { image: "/achievements/Sertif_Best_Presntasi.jpg", text: "Sertifikat Best Presentation, UNJ 2024" },
                     ]}
                     renderImage={(src, alt) => (
-                      <img
+                      <Image
                         src={src}
                         alt={alt}
                         style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }}
                         draggable={false}
+                        width={300}
+                        height={300}
                       />
                     )}
                     bend={3}

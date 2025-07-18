@@ -8,6 +8,7 @@ interface Item {
 
 interface TrackableCircularGalleryProps {
   items: Item[];
+  renderImage?: (src: string, alt: string) => React.ReactElement;
   bend?: number;
   textColor?: string;
   borderRadius?: number;
@@ -24,7 +25,13 @@ const TrackableCircularGallery: React.FC<TrackableCircularGalleryProps> = (props
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center">
       <CircularGallery
-        {...props}
+        items={props.items}
+        bend={props.bend}
+        textColor={props.textColor}
+        borderRadius={props.borderRadius}
+        font={props.font}
+        scrollSpeed={props.scrollSpeed}
+        scrollEase={props.scrollEase}
         loopCount={9}
         initialSet={5}
         onActiveChange={setCenterIndex}
