@@ -795,6 +795,7 @@ const App: React.FC = () => {
                     items={[
                       { image: "/achievements/hkicheator.jpg", text: "Hak Kekayaan Intelektual, Itenas 2024" },
                       { image: "/achievements/aslab_pemdas.jpg", text: "Asisten Laboratorium Pemograman Dasar, Itenas 2024" },
+                      { image: "/achievements/Magang_Omikron.png", text: "Intern PT Omikron Solusi Kreatif 2025" },
                       { image: "/achievements/findit.jpg", text: "Peserta Data Analyst FindIT, UGM 2024" },
                       { image: "/achievements/fortex.png", text: "Peserta Data Analyst Fortex, UAI 2024" },
                       { image: "/achievements/Huawei Juara 2.jpg", text: "Juara 2 Cloud Computing Track, Huawei 2024" },
