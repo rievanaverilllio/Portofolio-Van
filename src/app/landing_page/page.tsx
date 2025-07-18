@@ -177,7 +177,7 @@ const App: React.FC = () => {
                             transition={{ duration: 0.5, ease: "easeOut" }}
                             viewport={{ once: true, amount: 0.1 }}
                             className="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-x-4 md:space-y-0 sm:flex-col sm:space-y-4 mb-20">
-                            <a href="/dokumen/CV Rievan.pdf" download className="button-gradient-dark flex items-center space-x-2 rounded-xl px-6 py-3 text-white shadow-lg transition-all hover:scale-105">
+                            <a href="/dokumen/CV Rievan Averillio Fadhlan.pdf" download className="button-gradient-dark flex items-center space-x-2 rounded-xl px-6 py-3 text-white shadow-lg transition-all hover:scale-105">
                                 <Download />
                                 <span>Get Curriculum Vitae</span>
                             </a>
