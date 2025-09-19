@@ -735,19 +735,19 @@ const App: React.FC = () => {
                   </div>
                     <div className="space-y-6">
                     <div className="bg-[#232323] rounded-xl px-6 py-4 flex items-center text-sm md:text-base">
-                        <div className="flex-1 font-medium text-white">Lead Developer</div>
-                        <div className="flex-1 text-gray-300 text-center">TechNova AI</div>
-                        <div className="w-20 text-right text-gray-500">2023</div>
+                        <div className="flex-1 font-medium text-white">Front End Programming</div>
+                        <div className="flex-1 text-gray-300 text-center">PT Omikron Solusi Kreatif</div>
+                        <div className="w-20 text-right text-gray-500">Mar - Jun 2025</div>
                     </div>
                     <div className="bg-[#232323] rounded-xl px-6 py-4 flex items-center text-sm md:text-base">
-                        <div className="flex-1 font-medium text-white">AI Engineer</div>
-                        <div className="flex-1 text-gray-300 text-center">DataMind Labs</div>
-                        <div className="w-20 text-right text-gray-500">2021</div>
+                        <div className="flex-1 font-medium text-white">Assisten Laboratorium</div>
+                        <div className="flex-1 text-gray-300 text-center">Lab Pengolahan Citra Digital</div>
+                        <div className="w-20 text-right text-gray-500">Mar - Jun 2025</div>
                     </div>
                     <div className="bg-[#232323] rounded-xl px-6 py-4 flex items-center text-sm md:text-base">
-                        <div className="flex-1 font-medium text-white">Full-Stack Developer</div>
-                        <div className="flex-1 text-gray-300 text-center">CloudSphere</div>
-                        <div className="w-20 text-right text-gray-500">2024</div>
+                        <div className="flex-1 font-medium text-white">Assisten Laboratorium</div>
+                        <div className="flex-1 text-gray-300 text-center">Lab Pemograman Dasar</div>
+                        <div className="w-20 text-right text-gray-500">Sep - Des 2024</div>
                     </div>
                     </div>
 
