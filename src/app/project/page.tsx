@@ -34,7 +34,7 @@ const projects = [
   {
     title: "Osila",
     description: "Online villa and accommodation booking platform",
-    image: "/project/Osila.png", // fixed path case (was /Project/Osila.png in landing page)
+    image: "/project/osila.png", // fixed path case (was /Project/Osila.png in landing page)
     tags: ["React", "Typescript"],
     link: "https://github.com/rievanaverilllio/Osila-Hotel-app"
   },
@@ -48,7 +48,7 @@ const projects = [
   {
     title: "Medlitik",
     description: "Platform consultasi kesehatan seperti halodoc berbasis AI",
-    image: "/project/medlitik.png",
+    image: "/project/Medlitik.png",
     tags: ["React", "Javascript"],
     link: "https://github.com/rievanaverilllio/Front-Medlitik"
   }
