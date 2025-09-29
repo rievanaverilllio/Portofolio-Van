@@ -429,7 +429,7 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/Project/osila.png"
+                                                src="/project/Osila.png"
                                                 alt="Osila Project"
                                                 width={420}
                                                 height={200}
