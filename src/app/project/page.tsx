@@ -8,41 +8,49 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Particles from "@/components/react-bits/Particles";
 
+// Featured Projects content (replicated from landing page Featured section)
 const projects = [
   {
-    title: "LanderOS",
-    description: "Modern operating system interface built with React and TypeScript.",
-    image: "/global/cloud_app.jpg",
-    tags: ["React", "TypeScript"],
-    link: "#"
+    title: "Cheator",
+    description: "Cheating Detector Web App with Real-time Analysis and Reporting",
+    image: "/project/cheator.png",
+    tags: ["Vanila", "HTML"],
+    link: "https://github.com/rievanaverilllio/Cheator"
   },
   {
-    title: "AI Analytics",
-    description: "Machine learning platform for business intelligence and data analysis.",
-    image: "/global/custom_ai_solution.jpg",
-    tags: ["Python", "TensorFlow"],
-    link: "#"
+    title: "Banjay",
+    description: "Website for flood monitoring based on AI and satellite data",
+    image: "/project/banjay.png",
+    tags: ["React", "Typescript"],
+    link: "https://github.com/rievanaverilllio/Front-Banjay"
   },
   {
-    title: "CloudSync",
-    description: "Real-time collaboration platform with file synchronization features.",
-    image: "/global/fullstack_developer.jpg",
-    tags: ["Node.js", "Socket.io"],
-    link: "#"
+    title: "MiniGold",
+    description: "Online gold sales website",
+    image: "/project/minigold.png",
+    tags: ["React", "Typescript"],
+    link: "https://github.com/rievanaverilllio/MiniGold-app"
   },
   {
-    title: "DesignStudio",
-    description: "Creative design tool with AI-powered suggestions and collaboration.",
-    image: "/global/programmer1.jpg",
-    tags: ["Vue.js", "Canvas API"],
-    link: "#"
+    title: "Osila",
+    description: "Online villa and accommodation booking platform",
+    image: "/project/Osila.png", // fixed path case (was /Project/Osila.png in landing page)
+    tags: ["React", "Typescript"],
+    link: "https://github.com/rievanaverilllio/Osila-Hotel-app"
   },
   {
-    title: "DataFlow",
-    description: "Enterprise data pipeline with real-time processing and analytics.",
-    image: "/global/programmer2.jpg",
-    tags: ["Next.js", "GraphQL"],
-    link: "#"
+    title: "BakaShop",
+    description: "Platform e-commerce untuk pembelian berbagai jaket vintage",
+    image: "/project/bakashop.png",
+    tags: ["Laravel", "PHP"],
+    link: "https://github.com/rievanaverilllio/Website-ecommerce"
+  },
+  {
+    title: "Medlitik",
+    description: "Platform consultasi kesehatan seperti halodoc berbasis AI",
+    image: "/project/medlitik.png",
+    tags: ["React", "Javascript"],
+    link: "https://github.com/rievanaverilllio/Front-Medlitik"
   }
 ];
 

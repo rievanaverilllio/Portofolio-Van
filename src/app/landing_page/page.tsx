@@ -16,14 +16,16 @@ import Particles from '@/components/react-bits/Particles';
 import InfiniteScroll from '@/components/react-bits/InfiniteScroll';
 // --- START: Activities Infinite Scroll Section ---
 const activitiesImages = [
-  '/global/programmer1.jpg',
-  '/global/programmer2.jpg',
-  '/global/cloud_app.jpg',
-  '/global/custom_ai_solution.jpg',
-  '/global/fullstack_developer.jpg',
-  '/global/rievan.jpg',
-  '/global/moon.png',
-  '/window.svg',
+  '/activities/huawei-kunjungan.png',
+  '/activities/anggota lomba huawei.jpg',
+  '/activities/aslab-pemdas.png',
+  '/activities/ict1.png',
+  '/activities/ict2.png',
+  '/activities/ict3.png',
+  '/activities/ifrit.png',
+  '/activities/juara-huawei.jpg',
+  '/activities/kunjungan-ipwija-univ.png',
+  '/activities/lkti-chef.png',
 ];
 
 const activitiesItems = activitiesImages.map((img, idx) => ({
@@ -331,8 +333,8 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/global/cloud_app.jpg"
-                                                alt="LanderOS Project"
+                                                src="/project/cheator.png"
+                                                alt="Cheator Project"
                                                 width={420}
                                                 height={200}
                                                 className="w-full h-full object-cover"
@@ -346,14 +348,14 @@ const App: React.FC = () => {
                                         </div>
                                         <div className="p-6 flex-1 flex flex-col justify-between">
                                             <div>
-                                                <h3 className="text-white text-xl font-bold mb-2">LanderOS</h3>
+                                                <h3 className="text-white text-xl font-bold mb-2">Cheator</h3>
                                                 <p className="text-gray-300 text-sm leading-relaxed">
-                                                    Modern operating system interface built with React and TypeScript
+                                                    Cheating Detector Web App with Real-time Analysis and Reporting
                                                 </p>
                                             </div>
                                             <div className="flex gap-2 flex-wrap mt-4">
-                                                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium">React</span>
-                                                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium">TypeScript</span>
+                                                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium">Vanila</span>
+                                                <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium">HTML</span>
                                             </div>
                                         </div>
                                     </div>
@@ -363,8 +365,8 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/global/custom_ai_solution.jpg"
-                                                alt="AI Analytics Project"
+                                                src="/project/banjay.png"
+                                                alt="Banjay Project"
                                                 width={420}
                                                 height={200}
                                                 className="w-full h-full object-cover"
@@ -378,14 +380,14 @@ const App: React.FC = () => {
                                         </div>
                                         <div className="p-6 flex-1 flex flex-col justify-between">
                                             <div>
-                                                <h3 className="text-white text-xl font-bold mb-2">AI Analytics</h3>
+                                                <h3 className="text-white text-xl font-bold mb-2">Banjay</h3>
                                                 <p className="text-gray-300 text-sm leading-relaxed">
-                                                    Machine learning platform for business intelligence and data analysis
+                                                    Website for flood monitoring based on AI and satellite data
                                                 </p>
                                             </div>
                                             <div className="flex gap-2 flex-wrap mt-4">
-                                                <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-xs font-medium">Python</span>
-                                                <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-xs font-medium">TensorFlow</span>
+                                                <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-xs font-medium">React</span>
+                                                <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-xs font-medium">Typescript</span>
                                             </div>
                                         </div>
                                     </div>
@@ -395,8 +397,8 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/global/fullstack_developer.jpg"
-                                                alt="CloudSync Project"
+                                                src="/project/minigold.png"
+                                                alt="Mini Gold Project"
                                                 width={420}
                                                 height={200}
                                                 className="w-full h-full object-cover"
@@ -410,14 +412,14 @@ const App: React.FC = () => {
                                         </div>
                                         <div className="p-6 flex-1 flex flex-col justify-between">
                                             <div>
-                                                <h3 className="text-white text-xl font-bold mb-2">CloudSync</h3>
+                                                <h3 className="text-white text-xl font-bold mb-2">MiniGold</h3>
                                                 <p className="text-gray-300 text-sm leading-relaxed">
-                                                    Real-time collaboration platform with file synchronization features
+                                                    Online gold sales website
                                                 </p>
                                             </div>
                                             <div className="flex gap-2 flex-wrap mt-4">
-                                                <span className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-medium">Node.js</span>
-                                                <span className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-medium">Socket.io</span>
+                                                <span className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-medium">React</span>
+                                                <span className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-medium">Typescript</span>
                                             </div>
                                         </div>
                                     </div>
@@ -427,8 +429,8 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/global/programmer1.jpg"
-                                                alt="DesignStudio Project"
+                                                src="/Project/Osila.png"
+                                                alt="Osila Project"
                                                 width={420}
                                                 height={200}
                                                 className="w-full h-full object-cover"
@@ -442,14 +444,14 @@ const App: React.FC = () => {
                                         </div>
                                         <div className="p-6 flex-1 flex flex-col justify-between">
                                             <div>
-                                                <h3 className="text-white text-xl font-bold mb-2">DesignStudio</h3>
+                                                <h3 className="text-white text-xl font-bold mb-2">Osila</h3>
                                                 <p className="text-gray-300 text-sm leading-relaxed">
-                                                    Creative design tool with AI-powered suggestions and collaboration
+                                                    Online villa and accommodation booking platform
                                                 </p>
                                             </div>
                                             <div className="flex gap-2 flex-wrap mt-4">
-                                                <span className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-xs font-medium">Vue.js</span>
-                                                <span className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-xs font-medium">Canvas API</span>
+                                                <span className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-xs font-medium">React</span>
+                                                <span className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-xs font-medium">Typescript</span>
                                             </div>
                                         </div>
                                     </div>
@@ -470,7 +472,7 @@ const App: React.FC = () => {
                                     <div className="w-full h-full flex flex-col">
                                         <div className="relative h-48 overflow-hidden">
                                             <Image
-                                                src="/global/programmer2.jpg"
+                                                src="/project/bakashop.png"
                                                 alt="DataFlow Project"
                                                 width={420}
                                                 height={200}
@@ -485,14 +487,14 @@ const App: React.FC = () => {
                                         </div>
                                         <div className="p-6 flex-1 flex flex-col justify-between">
                                             <div>
-                                                <h3 className="text-white text-xl font-bold mb-2">DataFlow</h3>
+                                                <h3 className="text-white text-xl font-bold mb-2">BakaShop</h3>
                                                 <p className="text-gray-300 text-sm leading-relaxed">
-                                                    Enterprise data pipeline with real-time processing and analytics
+                                                    Platform e-commerce untuk pembelian berbagai jaket vintage
                                                 </p>
                                             </div>
                                             <div className="flex gap-2 flex-wrap mt-4">
-                                                <span className="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-xs font-medium">Next.js</span>
-                                                <span className="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-xs font-medium">GraphQL</span>
+                                                <span className="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-xs font-medium">Laravel</span>
+                                                <span className="px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full text-xs font-medium">PHP</span>
                                             </div>
                                         </div>
                                     </div>
@@ -548,9 +550,6 @@ const App: React.FC = () => {
                             <div className="text-lg md:text-2xl text-gray-300 mb-3">
                             Kontribusi Nyata di Dunia Teknologi & Kreativitas
                             </div>
-                            {/* <div className="text-base md:text-lg text-gray-400 mb-3">
-                            Dokumentasi perjalanan saya selama kuliah: mulai dari pengembangan web, eksplorasi kecerdasan buatan, hingga proyek-proyek kreatif yang menjadi bagian dari proses belajar dan kontribusi nyata saya di dunia teknologi.
-                            </div> */}
 
                         </div>
                         <InfiniteScroll
